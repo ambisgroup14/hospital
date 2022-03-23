@@ -220,7 +220,9 @@ include('include/header.php');
 
 
             <!-- Body -->
-           
+           <div class="card-footer d-flex justify-content-end align-items-center gap-3">              
+              <button type="submit"  class="btn btn-primary">Save</button>
+            </div>
             <!-- Body -->
           </div>
           <!-- End Card -->
