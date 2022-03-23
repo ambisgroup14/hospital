@@ -19,7 +19,7 @@ include('include/header.php');
       </div>
       <!-- End Page Header -->
 
-      <form class="row">
+      <form class="row" id="insertData" name="insertData">
         <div class="col-lg-12 mb-3 mb-lg-0">
           <!-- Card -->
           <div class="card mb-3 mb-lg-5">
