@@ -19,7 +19,7 @@ include('include/header.php');
       </div>
       <!-- End Page Header -->
 
-      <div class="row">
+      <form class="row">
         <div class="col-lg-12 mb-3 mb-lg-0">
           <!-- Card -->
           <div class="card mb-3 mb-lg-5">
@@ -32,11 +32,14 @@ include('include/header.php');
             <!-- Body -->
             <div class="card-body">
               <!-- Form -->
-              <div class="mb-4">
-                <label for="productNameLabel" class="form-label">Medicine Name <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Mentioned in Medicine." aria-label="Mentioned in Medicine."></i></label>
-
-                <input type="text" class="form-control" name="productName" id="productNameLabel" placeholder="Medicine Name" aria-label="Medicine Name" value="">
-              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                    <div class="mb-4">
+                    <label for="productNameLabel" class="form-label">Medicine Name </label>
+                    <input type="text" class="form-control" name="productName" id="productNameLabel" placeholder="Medicine Name" aria-label="Medicine Name" value="">
+                </div></div>
+                
+            </div>
               <!-- End Form -->
 
               <div class="row">
@@ -220,9 +223,11 @@ include('include/header.php');
 
 
             <!-- Body -->
-           <div class="card-footer d-flex justify-content-end align-items-center gap-3">              
+            <div class="card-footer d-flex justify-content-end align-items-center gap-3">       
+              <input type="hidden" name="insert_medicine" >       
               <button type="submit"  class="btn btn-primary">Save</button>
             </div>
+           
             <!-- Body -->
           </div>
           <!-- End Card -->
@@ -231,7 +236,7 @@ include('include/header.php');
         </div>
         <!-- End Col -->
 
-      </div>
+      </form>
       <!-- End Row -->
 
      
