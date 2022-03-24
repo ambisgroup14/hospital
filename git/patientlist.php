@@ -8,13 +8,13 @@ include('header.php');
      <div>
         <div class="row align-items-end mb-3">
           <div class="col-sm mb-2 mb-sm-0">            
-            <h1 class="page-header-title">Staff List</h1>
+            <h1 class="page-header-title">Patient List</h1>
           </div>
           <!-- End Col -->
 
           <div class="col-sm-auto">
             <a class="btn btn-primary" href="add_pharmacy.php">
-              <i class="bi-plus me-1"></i> Add Staff
+              <i class="bi-plus me-1"></i> Add Patient
             </a>
           </div>
           <!-- End Col -->
