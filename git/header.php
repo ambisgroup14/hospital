@@ -1,172 +1,70 @@
+<?php
+include('connection.php');
+
+if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!==''){
+
+}else{
+    header("location:login.php");
+}
+
+$script_name=$_SERVER['SCRIPT_NAME'];
+$script_name_arr=explode('/',$script_name);
+$mypage=$script_name_arr[count($script_name_arr)-1];
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-
-
-<head>
-  <!-- Required Meta Tags Always Come First -->
+<head>  
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Title -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
   <title>Dashboard | Lotus Hospital CRM </title>
-
-  <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
-
-  <!-- CSS Implementing Plugins -->
   <link rel="stylesheet" href="assets/css/vendor.min.css">
-
-  <!-- CSS Front Template -->
   <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
-
   <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
   <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
-
   <style data-hs-appearance-onload-styles>
     *
     {
       transition: unset !important;
     }
-
     body
     {
       opacity: 0;
     }
   </style>
-
   <!-- ONLY DEV -->
-
   <style>
     body
     {
       opacity: 0;
     }
   </style>
-
   <!-- END ONLY DEV -->
-
-  <script>
-            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.html","assets/css/docs.css","assets/vendor/icon-set/style.html","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.html","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
-            window.hs_config.gulpRGBA = (p1) => {
-  const options = p1.split(',')
-  const hex = options[0].toString()
-  const transparent = options[1].toString()
-
-  var c;
-  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-    c= hex.substring(1).split('');
-    if(c.length== 3){
-      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
-    }
-    c= '0x'+c.join('');
-    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
-  }
-  throw new Error('Bad Hex');
-}
-            window.hs_config.gulpDarken = (p1) => {
-  const options = p1.split(',')
-
-  let col = options[0].toString()
-  let amt = -parseInt(options[1])
-  var usePound = false
-
-  if (col[0] == "#") {
-    col = col.slice(1)
-    usePound = true
-  }
-  var num = parseInt(col, 16)
-  var r = (num >> 16) + amt
-  if (r > 255) {
-    r = 255
-  } else if (r < 0) {
-    r = 0
-  }
-  var b = ((num >> 8) & 0x00FF) + amt
-  if (b > 255) {
-    b = 255
-  } else if (b < 0) {
-    b = 0
-  }
-  var g = (num & 0x0000FF) + amt
-  if (g > 255) {
-    g = 255
-  } else if (g < 0) {
-    g = 0
-  }
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
-}
-            window.hs_config.gulpLighten = (p1) => {
-  const options = p1.split(',')
-
-  let col = options[0].toString()
-  let amt = parseInt(options[1])
-  var usePound = false
-
-  if (col[0] == "#") {
-    col = col.slice(1)
-    usePound = true
-  }
-  var num = parseInt(col, 16)
-  var r = (num >> 16) + amt
-  if (r > 255) {
-    r = 255
-  } else if (r < 0) {
-    r = 0
-  }
-  var b = ((num >> 8) & 0x00FF) + amt
-  if (b > 255) {
-    b = 255
-  } else if (b < 0) {
-    b = 0
-  }
-  var g = (num & 0x0000FF) + amt
-  if (g > 255) {
-    g = 255
-  } else if (g < 0) {
-    g = 0
-  }
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
-}
-            </script>
+  <script src="<?php echo SITE_PATH."include/" ?>main.js?v=1"></script>
 </head>
-
 <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
-
   <script src="assets/js/hs.theme-appearance.js"></script>
-
-  <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
-
-  <!-- ========== HEADER ========== -->
-
+  <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>  
   <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
-    <div class="navbar-nav-wrap">
-      <!-- Logo -->
+    <div class="navbar-nav-wrap">      
       <a class="navbar-brand" href="javascript:void(0)" aria-label="Hospital CRM">
       Hospital CRM
-      </a>
-      <!-- End Logo -->
-
-      <div class="navbar-nav-wrap-content-start">
-        <!-- Navbar Vertical Toggle -->
+      </a>      
+      <div class="navbar-nav-wrap-content-start">        
         <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
           <i class="bi-arrow-bar-left navbar-toggler-short-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
           <i class="bi-arrow-bar-right navbar-toggler-full-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
-        </button>
-
-        <!-- End Navbar Vertical Toggle -->
-
-        <!-- Search Form -->
-        <div class="dropdown ms-2">
-          <!-- Input Group -->
+        </button>        
+        <div class="dropdown ms-2">          
           <div class="d-none d-lg-block">
             <div class="input-group input-group-merge input-group-borderless input-group-hover-light navbar-input-group">
               <div class="input-group-prepend input-group-text">
                 <i class="bi-search"></i>
               </div>
-
               <input type="search" class="js-form-search form-control" placeholder="Search in front" aria-label="Search in front" data-hs-form-search-options='{
                        "clearIcon": "#clearSearchResultsIcon",
                        "dropMenuElement": "#searchDropdownMenu",
@@ -179,7 +77,6 @@
               </a>
             </div>
           </div>
-
           <button class="js-form-search js-form-search-mobile-toggle btn btn-ghost-secondary btn-icon rounded-circle d-lg-none" type="button" data-hs-form-search-options='{
                        "clearIcon": "#clearSearchResultsIcon",
                        "dropMenuElement": "#searchDropdownMenu",
@@ -188,74 +85,58 @@
                        "activeClass": "focus"
                      }'>
             <i class="bi-search"></i>
-          </button>
-          <!-- End Input Group -->
-
-          <!-- Card Search Content -->
-          <div id="searchDropdownMenu" class="hs-form-search-menu-content dropdown-menu dropdown-menu-form-search navbar-dropdown-menu-borderless">
-            <!-- Body -->
+          </button>         
+          <div id="searchDropdownMenu" class="hs-form-search-menu-content dropdown-menu dropdown-menu-form-search navbar-dropdown-menu-borderless">            
             <div class="card-body-height">
               <div class="d-lg-none">
                 <div class="input-group input-group-merge navbar-input-group mb-5">
                   <div class="input-group-prepend input-group-text">
                     <i class="bi-search"></i>
                   </div>
-
                   <input type="search" class="form-control" placeholder="Search in front" aria-label="Search in front">
                   <a class="input-group-append input-group-text" href="javascript:;">
                     <i class="bi-x-lg"></i>
                   </a>
                 </div>
               </div>
-
               <span class="dropdown-header">Recent searches</span>
-
               <div class="dropdown-item bg-transparent text-wrap">
-                <a class="btn btn-soft-dark btn-xs rounded-pill" href="index-2.html">
+                <a class="btn btn-soft-dark btn-xs rounded-pill" href="javascript:void(0)">
                   Gulp <i class="bi-search ms-1"></i>
                 </a>
-                <a class="btn btn-soft-dark btn-xs rounded-pill" href="index-2.html">
+                <a class="btn btn-soft-dark btn-xs rounded-pill" href="javascript:void(0)">
                   Notification panel <i class="bi-search ms-1"></i>
                 </a>
               </div>
-
               <div class="dropdown-divider"></div>
-
               <span class="dropdown-header">Tutorials</span>
-
-              <a class="dropdown-item" href="index-2.html">
+              <a class="dropdown-item" href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                   <div class="flex-shrink-0">
                     <span class="icon icon-soft-dark icon-xs icon-circle">
                       <i class="bi-sliders"></i>
                     </span>
                   </div>
-
                   <div class="flex-grow-1 text-truncate ms-2">
                     <span>How to set up Gulp?</span>
                   </div>
                 </div>
               </a>
-
-              <a class="dropdown-item" href="index-2.html">
+              <a class="dropdown-item" href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                   <div class="flex-shrink-0">
                     <span class="icon icon-soft-dark icon-xs icon-circle">
                       <i class="bi-paint-bucket"></i>
                     </span>
                   </div>
-
                   <div class="flex-grow-1 text-truncate ms-2">
                     <span>How to change theme color?</span>
                   </div>
                 </div>
               </a>
-
               <div class="dropdown-divider"></div>
-
               <span class="dropdown-header">Members</span>
-
-              <a class="dropdown-item" href="index-2.html">
+              <a class="dropdown-item" href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                   <div class="flex-shrink-0">
                     <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img10.jpg" alt="Image Description">
@@ -265,8 +146,7 @@
                   </div>
                 </div>
               </a>
-
-              <a class="dropdown-item" href="index-2.html">
+              <a class="dropdown-item" href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                   <div class="flex-shrink-0">
                     <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img3.jpg" alt="Image Description">
@@ -276,8 +156,7 @@
                   </div>
                 </div>
               </a>
-
-              <a class="dropdown-item" href="index-2.html">
+              <a class="dropdown-item" href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                   <div class="flex-shrink-0">
                     <div class="avatar avatar-xs avatar-soft-info avatar-circle">
@@ -291,20 +170,16 @@
               </a>
             </div>
             <!-- End Body -->
-
             <!-- Footer -->
-            <a class="card-footer text-center" href="index-2.html">
+            <a class="card-footer text-center" href="javascript:void(0)">
               See all results <i class="bi-chevron-right small"></i>
             </a>
             <!-- End Footer -->
           </div>
           <!-- End Card Search Content -->
-
         </div>
-
         <!-- End Search Form -->
       </div>
-
       <div class="navbar-nav-wrap-content-end">
         <!-- Navbar -->
         <ul class="navbar-nav">
@@ -315,35 +190,32 @@
                 <i class="bi-bell"></i>
                 <span class="btn-status btn-sm-status btn-status-danger"></span>
               </button>
-
               <div class="dropdown-menu dropdown-menu-end dropdown-card navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="navbarNotificationsDropdown" style="width: 25rem;">
                 <!-- Header -->
                 <div class="card-header card-header-content-between">
                   <h4 class="card-title mb-0">Notifications</h4>
-
                   <!-- Unfold -->
                   <div class="dropdown">
                     <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle" id="navbarNotificationsDropdownSettings" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi-three-dots-vertical"></i>
                     </button>
-
                     <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="navbarNotificationsDropdownSettings">
                       <span class="dropdown-header">Settings</span>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="javascript:void(0)">
                         <i class="bi-archive dropdown-item-icon"></i> Archive all
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="javascript:void(0)">
                         <i class="bi-check2-all dropdown-item-icon"></i> Mark all as read
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="javascript:void(0)">
                         <i class="bi-toggle-off dropdown-item-icon"></i> Disable notifications
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="javascript:void(0)">
                         <i class="bi-gift dropdown-item-icon"></i> What's new?
                       </a>
                       <div class="dropdown-divider"></div>
                       <span class="dropdown-header">Feedback</span>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="javascript:void(0)">
                         <i class="bi-chat-left-dots dropdown-item-icon"></i> Report
                       </a>
                     </div>
@@ -351,7 +223,6 @@
                   <!-- End Unfold -->
                 </div>
                 <!-- End Header -->
-
                 <!-- Nav -->
                 <ul class="nav nav-tabs nav-justified" id="notificationTab" role="tablist">
                   <li class="nav-item">
@@ -362,7 +233,6 @@
                   </li>
                 </ul>
                 <!-- End Nav -->
-
                 <!-- Body -->
                 <div class="card-body-height">
                   <!-- Tab Content -->
@@ -384,22 +254,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Brian Warner</h5>
                               <p class="text-body fs-5">changed an issue from "In Progress" to <span class="badge bg-success">Review</span></p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">2hr</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -416,7 +282,6 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Klara Hampton</h5>
                               <p class="text-body fs-5">mentioned you in a comment</p>
@@ -425,16 +290,13 @@
                               </blockquote>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">10hr</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -451,22 +313,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Ruby Walter</h5>
                               <p class="text-body fs-5">joined the Slack group HS Team</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">3dy</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -483,22 +341,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">from Google</h5>
                               <p class="text-body fs-5">Start using forms to capture the information of prospects visiting your Google website</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">17dy</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -515,25 +369,21 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Sara Villar</h5>
                               <p class="text-body fs-5">completed <i class="bi-journal-bookmark-fill text-primary"></i> FD-7 task</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">2mn</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
                       </ul>
                       <!-- End List Group -->
                     </div>
-
                     <div class="tab-pane fade" id="notificationNavTwo" role="tabpanel" aria-labelledby="notificationNavTwo-tab">
                       <!-- List Group -->
                       <ul class="list-group list-group-flush navbar-card-list-group">
@@ -553,22 +403,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Anne Richard</h5>
                               <p class="text-body fs-5">accepted your invitation to join Notion</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">1dy</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -585,22 +431,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Finch Hoot</h5>
                               <p class="text-body fs-5">left Slack group HS projects</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">1dy</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -617,22 +459,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Htmlstream</h5>
                               <p class="text-body fs-5">you earned a "Top endorsed" <i class="bi-patch-check-fill text-primary"></i> badge</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">6dy</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -649,22 +487,18 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Linda Bates</h5>
                               <p class="text-body fs-5">Accepted your connection</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">17dy</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
-
                         <!-- Item -->
                         <li class="list-group-item form-check-select">
                           <div class="row">
@@ -681,19 +515,16 @@
                               </div>
                             </div>
                             <!-- End Col -->
-
                             <div class="col ms-n2">
                               <h5 class="mb-1">Lewis Clarke</h5>
                               <p class="text-body fs-5">completed <i class="bi-journal-bookmark-fill text-primary"></i> FD-134 task</p>
                             </div>
                             <!-- End Col -->
-
                             <small class="col-auto text-muted text-cap">2mts</small>
                             <!-- End Col -->
                           </div>
                           <!-- End Row -->
-
-                          <a class="stretched-link" href="#"></a>
+                          <a class="stretched-link" href="javascript:void(0)"></a>
                         </li>
                         <!-- End Item -->
                       </ul>
@@ -703,9 +534,8 @@
                   <!-- End Tab Content -->
                 </div>
                 <!-- End Body -->
-
                 <!-- Card Footer -->
-                <a class="card-footer text-center" href="#">
+                <a class="card-footer text-center" href="javascript:void(0)">
                   View all notifications <i class="bi-chevron-right"></i>
                 </a>
                 <!-- End Card Footer -->
@@ -713,24 +543,21 @@
             </div>
             <!-- End Notification -->
           </li>
-
           <li class="nav-item d-none d-sm-inline-block">
             <!-- Apps -->
             <div class="dropdown">
               <button type="button" class="btn btn-icon btn-ghost-secondary rounded-circle" id="navbarAppsDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
                 <i class="bi-app-indicator"></i>
               </button>
-
               <div class="dropdown-menu dropdown-menu-end dropdown-card navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="navbarAppsDropdown" style="width: 25rem;">
                 <!-- Header -->
                 <div class="card-header">
                   <h4 class="card-title">Web apps &amp; services</h4>
                 </div>
                 <!-- End Header -->
-
                 <!-- Body -->
                 <div class="card-body card-body-height">
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="javascript:void(0)">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-xs avatar-4x3" src="assets/svg/brands/atlassian-icon.svg" alt="Image Description">
@@ -741,8 +568,7 @@
                       </div>
                     </div>
                   </a>
-
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="javascript:void(0)">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-xs avatar-4x3" src="assets/svg/brands/slack-icon.svg" alt="Image Description">
@@ -753,8 +579,7 @@
                       </div>
                     </div>
                   </a>
-
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="javascript:void(0)">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-xs avatar-4x3" src="assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
@@ -765,8 +590,7 @@
                       </div>
                     </div>
                   </a>
-
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="javascript:void(0)">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-xs avatar-4x3" src="assets/svg/brands/frontapp-icon.svg" alt="Image Description">
@@ -777,8 +601,7 @@
                       </div>
                     </div>
                   </a>
-
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="javascript:void(0)">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-xs avatar-4x3" src="assets/svg/illustrations/review-rating-shield.svg" alt="Image Description">
@@ -789,8 +612,7 @@
                       </div>
                     </div>
                   </a>
-
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="javascript:void(0)">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <div class="avatar avatar-sm avatar-soft-dark">
@@ -805,9 +627,8 @@
                   </a>
                 </div>
                 <!-- End Body -->
-
                 <!-- Footer -->
-                <a class="card-footer text-center" href="#">
+                <a class="card-footer text-center" href="javascript:void(0)">
                   View all apps <i class="bi-chevron-right"></i>
                 </a>
                 <!-- End Footer -->
@@ -815,7 +636,6 @@
             </div>
             <!-- End Apps -->
           </li>
-
           <li class="nav-item d-none d-sm-inline-block">
             <!-- Activity -->
             <button class="btn btn-ghost-secondary btn-icon rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasActivityStream" aria-controls="offcanvasActivityStream">
@@ -823,7 +643,6 @@
             </button>
             <!-- Activity -->
           </li>
-
           <li class="nav-item">
             <!-- Account -->
             <div class="dropdown">
@@ -833,7 +652,6 @@
                   <span class="avatar-status avatar-sm-status avatar-status-success"></span>
                 </div>
               </a>
-
               <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
                 <div class="dropdown-item-text">
                   <div class="d-flex align-items-center">
@@ -846,36 +664,30 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="dropdown-divider"></div>
-
                 <!-- Dropdown -->
                 <div class="dropdown">
                   <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
-
                   <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="javascript:void(0)">
                       <span class="legend-indicator bg-success me-1"></span> Available
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="javascript:void(0)">
                       <span class="legend-indicator bg-danger me-1"></span> Busy
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="javascript:void(0)">
                       <span class="legend-indicator bg-warning me-1"></span> Away
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"> Reset status
+                    <a class="dropdown-item" href="javascript:void(0)"> Reset status
                     </a>
                   </div>
                 </div>
                 <!-- End Dropdown -->
-
-                <a class="dropdown-item" href="#">Profile &amp; account</a>
-                <a class="dropdown-item" href="#">Settings</a>
-
+                <a class="dropdown-item" href="javascript:void(0)">Profile &amp; account</a>
+                <a class="dropdown-item" href="javascript:void(0)">Settings</a>
                 <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="javascript:void(0)">
                   <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">
                       <div class="avatar avatar-sm avatar-dark avatar-circle">
@@ -888,34 +700,28 @@
                     </div>
                   </div>
                 </a>
-
                 <div class="dropdown-divider"></div>
-
                 <!-- Dropdown -->
                 <div class="dropdown">
                   <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
-
                   <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="javascript:void(0)">
                       Invite people
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="javascript:void(0)">
                       Analytics
                       <i class="bi-box-arrow-in-up-right"></i>
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="javascript:void(0)">
                       Customize Front
                       <i class="bi-box-arrow-in-up-right"></i>
                     </a>
                   </div>
                 </div>
                 <!-- End Dropdown -->
-
-                <a class="dropdown-item" href="#">Manage team</a>
-
+                <a class="dropdown-item" href="javascript:void(0)">Manage team</a>
                 <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">Sign out</a>
+                <a class="dropdown-item" href="javascript:void(0)">Sign out</a>
               </div>
             </div>
             <!-- End Account -->
@@ -925,31 +731,23 @@
       </div>
     </div>
   </header>
-
   <!-- ========== END HEADER ========== -->
-
   <!-- ========== MAIN CONTENT ========== -->
   <!-- Navbar Vertical -->
-
   <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white  ">
     <div class="navbar-vertical-container">
       <div class="navbar-vertical-footer-offset">
         <!-- Logo -->
-
         <a class="navbar-brand" href="javascript:void(0)" aria-label="Hospital CRM">
         Hospital CRM
         </a>
-
         <!-- End Logo -->
-
         <!-- Navbar Vertical Toggle -->
         <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
           <i class="bi-arrow-bar-left navbar-toggler-short-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
           <i class="bi-arrow-bar-right navbar-toggler-full-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
         </button>
-
         <!-- End Navbar Vertical Toggle -->
-
         <!-- Content -->
         <div class="navbar-vertical-content">
           <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
@@ -961,7 +759,6 @@
                 <span class="nav-link-title">Dashboards</span>
                 </a>
               </div>
-
               
             <!-- <div id="navbarVerticalMenuDashboards" class="nav-collapse collapse show" data-bs-parent="#navbarVerticalMenu">
                 <a class="nav-link active" href="index-2.html">Default</a>
@@ -969,24 +766,19 @@
               </div>
             </div> -->
             <!-- End Collapse -->
-
             <span class="dropdown-header mt-4">Apps</span>
             <small class="bi-three-dots nav-subtitle-replacer"></small>
-
             <!-- Collapse -->
             <div class="navbar-nav nav-compact">
-
             </div>
             <div id="navbarVerticalMenuPagesMenu">
               <!-- Collapse -->
-
               <div class="nav-item">
                 <a class="nav-link " href="javascript:void(0)" data-placement="left">
                 <i class="bi bi-cash-stack nav-icon"></i>
                 <span class="nav-link-title">Billing</span>
                 </a>
               </div>
-
                 <!--<div id="navbarVerticalMenuPagesUsersMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                   <a class="nav-link " href="users.html">Overview</a>
                   <a class="nav-link " href="users-leaderboard.html">Leaderboard</a>
@@ -994,7 +786,6 @@
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <!-- Collapse -->
               
               <div class="nav-item">
@@ -1003,7 +794,6 @@
                 <span class="nav-link-title">Appoinments</span>
                 </a>
               </div>
-
                <!-- <div id="navbarVerticalMenuPagesUserProfileMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                   <a class="nav-link " href="user-profile.html">Profile</a>
                   <a class="nav-link " href="user-profile-teams.html">Teams</a>
@@ -1013,7 +803,6 @@
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <!-- Collapse -->
               
               <div class="nav-item">
@@ -1022,7 +811,6 @@
                 <span class="nav-link-title">Out Patients</span>
                 </a>
               </div>
-
                 <!--<div id="navbarVerticalMenuPagesAccountMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                   <a class="nav-link " href="account-settings.html">Settings</a>
                   <a class="nav-link " href="account-billing.html">Billing</a>
@@ -1030,26 +818,21 @@
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <!-- Collapse -->
-
                 <div class="nav-item">
                 <a class="nav-link " href="javascript:void(0)" data-placement="left">
                 <i class="bi bi-person-dash-fill nav-icon"></i>
                 <span class="nav-link-title">In Patients</span>
                 </a>
               </div>
-
                <!-- <div id="navbarVerticalMenuPagesEcommerceMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                   <a class="nav-link " href="ecommerce.html">Overview</a>
-
                   <div id="navbarVerticalMenuPagesMenuEcommerce">
                   
                     <div class="nav-item">
                       <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceProductsMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceProductsMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceProductsMenu">
                         Products
                       </a>
-
                       <div id="navbarVerticalMenuPagesEcommerceProductsMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
                         <a class="nav-link " href="ecommerce-products.html">Products</a>
                         <a class="nav-link " href="ecommerce-product-details.html">Product Details</a>
@@ -1061,7 +844,6 @@
                       <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceOrdersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceOrdersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceOrdersMenu">
                         Orders
                       </a>
-
                       <div id="navbarVerticalMenuPagesEcommerceOrdersMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
                         <a class="nav-link " href="ecommerce-orders.html">Orders</a>
                         <a class="nav-link " href="ecommerce-order-details.html">Order Details</a>
@@ -1072,7 +854,6 @@
                       <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceCustomersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceCustomersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceCustomersMenu">
                         Customers
                       </a>
-
                       <div id="navbarVerticalMenuPagesEcommerceCustomersMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
                         <a class="nav-link " href="ecommerce-customers.html">Customers</a>
                         <a class="nav-link " href="ecommerce-customer-details.html">Customer Details</a>
@@ -1081,41 +862,34 @@
                     </div>
                    End Collapse 
                   </div>
-
                   <a class="nav-link " href="ecommerce-referrals.html">Referrals</a>
                   <a class="nav-link " href="ecommerce-manage-reviews.html">Manage Reviews</a>
                   <a class="nav-link " href="ecommerce-checkout.html">Checkout</a>
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <!-- Collapse -->
               
-
               <div class="nav-item">
-                <a class="nav-link " href="javascript:void(0)" data-placement="left">
+                <a class="nav-link " href="pharmacy.php" data-placement="left">
                 <i class="bi bi-cart-plus-fill nav-icon"></i>
                 <span class="nav-link-title">Pharmacy</span>
                 </a>
               </div>
-
                <!-- <div id="navbarVerticalMenuPagesProjectsMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                   <a class="nav-link " href="projects.html">Overview</a>
                   <a class="nav-link " href="projects-timeline.html">Timeline</a>
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <!-- Collapse -->
              
               <div class="nav-item">
-              <a class="nav-link " href="javascript:void(0)" data-placement="left">
+              <a class="nav-link " href="staff.php" data-placement="left">
                 <i class="bi bi-file-person-fill nav-icon"></i>
                 <span class="nav-link-title">HR</span>
               </a>
             </div>
-
-
                 <!--<div id="navbarVerticalMenuPagesProjectMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                   <a class="nav-link " href="project.html">Overview</a>
                   <a class="nav-link " href="project-files.html">Files</a>
@@ -1125,7 +899,6 @@
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <!-- Collapse -->
               <div class="nav-item">
               <a class="nav-link " href="javascript:void(0)" data-placement="left">
@@ -1133,9 +906,7 @@
                 <span class="nav-link-title">Referral</span>
               </a>
             </div>
-
                 
-
                 <!-- <div id="navbarVerticalMenuAuthentication" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenu">
                   <div id="navbarVerticalMenuAuthenticationMenu">
                  Collapse 
@@ -1143,33 +914,28 @@
                       <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuAuthenticationLoginMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuAuthenticationLoginMenu" aria-expanded="false" aria-controls="navbarVerticalMenuAuthenticationLoginMenu">
                         Log In
                       </a>
-
                       <div id="navbarVerticalMenuAuthenticationLoginMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
                         <a class="nav-link " href="authentication-login-basic.html">Basic</a>
                         <a class="nav-link " href="authentication-login-cover.html">Cover</a>
                       </div>
                     </div>
                    End Collapse 
-
                      Collapse 
                     <div class="nav-item">
                       <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuAuthenticationSignupMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuAuthenticationSignupMenu" aria-expanded="false" aria-controls="navbarVerticalMenuAuthenticationSignupMenu">
                         Sign Up
                       </a>
-
                       <div id="navbarVerticalMenuAuthenticationSignupMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
                         <a class="nav-link " href="authentication-signup-basic.html">Basic</a>
                         <a class="nav-link " href="authentication-signup-cover.html">Cover</a>
                       </div>
                     </div>
                      End Collapse
-
                     Collapse
                     <div class="nav-item">
                       <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuAuthenticationResetPasswordMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuAuthenticationResetPasswordMenu" aria-expanded="false" aria-controls="navbarVerticalMenuAuthenticationResetPasswordMenu">
                         Reset Password
                       </a>
-
                       <div id="navbarVerticalMenuAuthenticationResetPasswordMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
                         <a class="nav-link " href="authentication-reset-password-basic.html">Basic</a>
                         <a class="nav-link " href="authentication-reset-password-cover.html">Cover</a>
@@ -1180,7 +946,6 @@
                       <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuAuthenticationEmailVerificationMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuAuthenticationEmailVerificationMenu" aria-expanded="false" aria-controls="navbarVerticalMenuAuthenticationEmailVerificationMenu">
                         Email Verification
                       </a>
-
                       <div id="navbarVerticalMenuAuthenticationEmailVerificationMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
                         <a class="nav-link " href="authentication-email-verification-basic.html">Basic</a>
                         <a class="nav-link " href="authentication-email-verification-cover.html">Cover</a>
@@ -1190,14 +955,12 @@
                       <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuAuthentication2StepVerificationMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuAuthentication2StepVerificationMenu" aria-expanded="false" aria-controls="navbarVerticalMenuAuthentication2StepVerificationMenu">
                         2-step Verification
                       </a>
-
                       <div id="navbarVerticalMenuAuthentication2StepVerificationMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
                         <a class="nav-link " href="authentication-2-step-verification-basic.html">Basic</a>
                         <a class="nav-link " href="authentication-2-step-verification-cover.html">Cover</a>
                       </div>
                     </div>
                     
-
                     <a class="nav-link" href="javascript:;" data-bs-toggle="modal" data-bs-target="#welcomeMessageModal">Welcome Message</a>
                     <a class="nav-link " href="error-404.html">Error 404</a>
                     <a class="nav-link " href="error-500.html">Error 500</a>
@@ -1205,21 +968,18 @@
                 </div>
               </div> -->
               <!-- End Collapse -->
-
               <div class="nav-item">
                 <a class="nav-link " href="javascript:void(0)" data-placement="left">
                   <i class="bi bi-shield-fill-plus nav-icon"></i>
                   <span class="nav-link-title">TPA</span>
                 </a>
               </div>
-
               <div class="nav-item">
                 <a class="nav-link " href="javascript:void(0)" data-placement="left">
                   <i class="bi bi-cash-coin nav-icon"></i>
                   <span class="nav-link-title">Finance</span>
                 </a>
               </div>
-
               <div class="nav-item">
                 <a class="nav-link " href="javascript:void(0)" data-placement="left">
                   <i class="bi bi-house-door-fill nav-icon"></i>
@@ -1228,182 +988,95 @@
               </div>
             </div>
             <!-- End Collapse -->
-
             <!-- <span class="dropdown-header mt-4">Apps</span>
             <small class="bi-three-dots nav-subtitle-replacer"></small> -->
-
             <div class="nav-item">
               <a class="nav-link " href="javascript:void(0)" data-placement="left">
                 <i class="bi-kanban nav-icon"></i>
                 <span class="nav-link-title">Report</span>
               </a>
             </div>
-
             <div class="nav-item">
               <a class="nav-link" href="javascript:void(0)" id="builderOffcanvas" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBuilder" aria-controls="offcanvasBuilder" data-placement="left">
                 <i class="bi-grid-1x2 nav-icon"></i>
                 <span class="nav-link-title">Menu Settings</span>
               </a>
             </div>
-
-            <!-- <div class="nav-item">
-              <a class="nav-link " href="apps-calendar.html" data-placement="left">
-                <i class="bi-calendar-week nav-icon"></i>
-                <span class="nav-link-title">Calendar</span>
-              </a>
-            </div>
+           
+            <span class="dropdown-header mt-4">Master</span>
 
             <div class="nav-item">
-              <a class="nav-link " href="apps-invoice-generator.html" data-placement="left">
-                <i class="bi-receipt nav-icon"></i>
-                <span class="nav-link-title">Invoice Generator</span>
-              </a>
-            </div>
-
-            <div class="nav-item">
-              <a class="nav-link " href="apps-file-manager.html" data-placement="left">
-                <i class="bi-folder2-open nav-icon"></i>
-                <span class="nav-link-title">File Manager</span>
-              </a>
-            </div>
-
-            <span class="dropdown-header mt-4">Layouts</span>
-            <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-            <div class="nav-item">
-              <a class="nav-link " href="layouts/index.html" data-placement="left">
-                <i class="bi-grid-1x2 nav-icon"></i>
-                <span class="nav-link-title">Layouts</span>
-              </a>
-            </div>
-
-            <span class="dropdown-header mt-4">Documentation</span>
-            <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-            <div class="nav-item">
-              <a class="nav-link " href="documentation/index.html" data-placement="left">
-                <i class="bi-book nav-icon"></i>
-                <span class="nav-link-title">Documentation <span class="badge bg-primary rounded-pill ms-1">v2.0</span></span>
-              </a>
-            </div>
-
-            <div class="nav-item">
-              <a class="nav-link " href="documentation/typography.html" data-placement="left">
+              <a class="nav-link" href="department.php">
                 <i class="bi-layers nav-icon"></i>
-                <span class="nav-link-title">Components</span>
+                <span class="nav-link-title">Department</span>
               </a>
             </div>
+           
+        
+            <!-- Footer -->
+          <div class="navbar-vertical-footer">
+            <ul class="navbar-vertical-footer-list">
+              <li class="navbar-vertical-footer-list-item">
+                <!-- Style Switcher -->
+                <div class="dropdown dropup">
+                  <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectThemeDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+                  </button>
+                  <div class="dropdown-menu navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectThemeDropdown">
+                    <a class="dropdown-item" href="javascript:void(0)" data-icon="bi-moon-stars" data-value="auto">
+                      <i class="bi-moon-stars me-2"></i>
+                      <span class="text-truncate" title="Auto (system default)">Auto (system default)</span>
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" data-icon="bi-brightness-high" data-value="default">
+                      <i class="bi-brightness-high me-2"></i>
+                      <span class="text-truncate" title="Default (light mode)">Default (light mode)</span>
+                    </a>
+                    <a class="dropdown-item active" href="javascript:void(0)" data-icon="bi-moon" data-value="dark">
+                      <i class="bi-moon me-2"></i>
+                      <span class="text-truncate" title="Dark">Dark</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End Style Switcher -->
+              </li>
+              <li class="navbar-vertical-footer-list-item">
+                <!-- Other Links -->
+                <div class="dropdown dropup">
+                  <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="otherLinksDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+                    <i class="bi-info-circle"></i>
+                  </button>
+                  <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="otherLinksDropdown">
+                    <span class="dropdown-header">Help</span>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                      <i class="bi-journals dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Resources &amp; tutorials">Resources &amp; tutorials</span>
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                      <i class="bi-command dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Keyboard shortcuts">Keyboard shortcuts</span>
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                      <i class="bi-alt dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Connect other apps">Connect other apps</span>
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                      <i class="bi-gift dropdown-item-icon"></i>
+                      <span class="text-truncate" title="What's new?">What's new?</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <span class="dropdown-header">Contacts</span>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                      <i class="bi-chat-left-dots dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Contact support">Contact support</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End Other Links -->
+              </li>           
+            </ul>
           </div>
-
-        </div>
-         End Content -->
-
-        <!-- Footer -->
-        <div class="navbar-vertical-footer">
-          <ul class="navbar-vertical-footer-list">
-            <li class="navbar-vertical-footer-list-item">
-              <!-- Style Switcher -->
-              <div class="dropdown dropup">
-                <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectThemeDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-
-                </button>
-
-                <div class="dropdown-menu navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectThemeDropdown">
-                  <a class="dropdown-item" href="#" data-icon="bi-moon-stars" data-value="auto">
-                    <i class="bi-moon-stars me-2"></i>
-                    <span class="text-truncate" title="Auto (system default)">Auto (system default)</span>
-                  </a>
-                  <a class="dropdown-item" href="#" data-icon="bi-brightness-high" data-value="default">
-                    <i class="bi-brightness-high me-2"></i>
-                    <span class="text-truncate" title="Default (light mode)">Default (light mode)</span>
-                  </a>
-                  <a class="dropdown-item active" href="#" data-icon="bi-moon" data-value="dark">
-                    <i class="bi-moon me-2"></i>
-                    <span class="text-truncate" title="Dark">Dark</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- End Style Switcher -->
-            </li>
-
-            <li class="navbar-vertical-footer-list-item">
-              <!-- Other Links -->
-              <div class="dropdown dropup">
-                <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="otherLinksDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-                  <i class="bi-info-circle"></i>
-                </button>
-
-                <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="otherLinksDropdown">
-                  <span class="dropdown-header">Help</span>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-journals dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Resources &amp; tutorials">Resources &amp; tutorials</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-command dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Keyboard shortcuts">Keyboard shortcuts</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-alt dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Connect other apps">Connect other apps</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-gift dropdown-item-icon"></i>
-                    <span class="text-truncate" title="What's new?">What's new?</span>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <span class="dropdown-header">Contacts</span>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-chat-left-dots dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Contact support">Contact support</span>
-                  </a>
-                </div>
-              </div>
-              <!-- End Other Links -->
-            </li>
-
-            <li class="navbar-vertical-footer-list-item">
-              <!-- Language 
-              <div class="dropdown dropup">
-                <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectLanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-                  <img class="avatar avatar-xss avatar-circle" src="assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="United States Flag">
-                </button>
-
-                <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectLanguageDropdown">
-                  <span class="dropdown-header">Select language</span>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Flag">
-                    <span class="text-truncate" title="English">English (US)</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/gb.svg" alt="Flag">
-                    <span class="text-truncate" title="English">English (UK)</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/de.svg" alt="Flag">
-                    <span class="text-truncate" title="Deutsch">Deutsch</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/dk.svg" alt="Flag">
-                    <span class="text-truncate" title="Dansk">Dansk</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/it.svg" alt="Flag">
-                    <span class="text-truncate" title="Italiano">Italiano</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/cn.svg" alt="Flag">
-                    <span class="text-truncate" title="中文 (繁體)">中文 (繁體)</span>
-                  </a>
-                </div>
-              </div>
-
-               End Language -->
-            </li>
-          </ul>
-        </div>
         <!-- End Footer -->
       </div>
     </div>
   </aside>
+
+  <?php include('modal.php'); ?>
