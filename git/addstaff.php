@@ -32,10 +32,10 @@ include('header.php');
             <!-- Body -->
             <div class="card-body">
             <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                     <div class="mb-4">
                  
-                        <label for="Case" class="form-label">Name</label>
+                        <label for="Name" class="form-label">Name</label>
 
                       <div class="input-group">
                         <input type="Text" class="form-control" name="Name" id="Name" placeholder="Name" aria-label="Name">
@@ -45,7 +45,7 @@ include('header.php');
            
 
            
-            <div class="col-sm-6 ">                
+            <div class="col-sm-4 ">                
                  <div class="mb-4">
                      <label for="Roll" class="form-label">Roll</label>
  
@@ -60,7 +60,7 @@ include('header.php');
                  </div>
              </div>
 
-             <div class="col-sm-6">                
+             <div class="col-sm-4">                
                  <div class="mb-4">
                      <label for="Designation" class="form-label">Designation</label>
  
@@ -71,9 +71,10 @@ include('header.php');
                      </select>
                  </div>
              </div> 
+             </div> 
 
-             
-             <div class="col-sm-6">                
+             <div class="row">
+             <div class="col-sm-4">                
                  <div class="mb-4">
                      <label for="Department" class="form-label">Department</label>
  
@@ -85,7 +86,7 @@ include('header.php');
                  </div>
              </div> 
 
-             <div class="col-sm-6">                
+             <div class="col-sm-4">                
                  <div class="mb-4">
                      <label for="Specialist" class="form-label">Specialist</label>
  
@@ -97,7 +98,7 @@ include('header.php');
                  </div>
              </div> 
 
-             <div class="col-sm-6">
+             <div class="col-sm-4">
                     <div class="mb-4">
                  
                         <label for="epfno" class="form-label">EPF No</label>
@@ -106,10 +107,11 @@ include('header.php');
                       <input type="Text" class="form-control" name="epfno" id="epfno" placeholder="EPF Number" aria-label="epfno">
                     </div>   
                     </div> 
+            </div> 
             </div>   
-           
-            
-            <div class="col-sm-6">
+  
+            <div class="row">
+            <div class="col-sm-4">
                     <div class="mb-4">
                  
                         <label for="Basicsalary" class="form-label">Basic Salary</label>
@@ -120,7 +122,7 @@ include('header.php');
                     </div> 
             </div>   
 
-            <div class="col-sm-6">                
+            <div class="col-sm-4">                
                  <div class="mb-4">
                      <label for="Contracttype" class="form-label">Contract Type</label>
  
@@ -132,7 +134,7 @@ include('header.php');
                  </div>
              </div>
 
-             <div class="col-sm-6">                
+             <div class="col-sm-4">                
                  <div class="mb-4">
                      <label for="workshift" class="form-label">Work Shift</label>
  
@@ -143,8 +145,10 @@ include('header.php');
                      </select>
                  </div>
              </div>
+             </div>
 
-             <div class="col-sm-6">
+             <div class="row">
+             <div class="col-sm-4">
                     <div class="mb-4">
                  
                         <label for="Worklocation" class="form-label">Work Location</label>
@@ -156,7 +160,7 @@ include('header.php');
             </div>  
         
           
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                 
                         <label for="Dateofjoining" class="form-label">Date of Joining </label>
@@ -169,7 +173,7 @@ include('header.php');
             </div>
               
             
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                  
                         <label for="Case" class="form-label">Phone No/E-Contact No</label>
@@ -178,9 +182,11 @@ include('header.php');
                       <input type="Number" class="form-control" name="Case" id="Case" placeholder="Phone No/E-Contact No" aria-label="Case">
                     </div>   
                   </div> 
+            </div>
             </div>   
-
-            <div class="col-sm-6">
+   
+            <div class="row">
+            <div class="col-sm-4">
                   <div class="mb-4">
                  
                         <label for="EmailID" class="form-label">Email</label>
@@ -192,7 +198,7 @@ include('header.php');
             </div>  
           
          
-            <div class="col-sm-6">                
+            <div class="col-sm-4">                
                  <div class="mb-4">
                      <label for="Gender" class="form-label">Gender</label>
  
@@ -206,7 +212,7 @@ include('header.php');
                  </div>
              </div> 
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                      <label for="Bloodgroup" class="form-label">Blood Group</label>
  
@@ -222,9 +228,11 @@ include('header.php');
                      </select>
                   </div>
             </div>
-            
+            </div>
 
-            <div class="col-sm-6">
+            
+            <div class="row">
+            <div class="col-sm-4">
                   <div class="mb-4">
                 
                         <label for="Dateofbirth" class="form-label">Date of Birth</label>
@@ -233,37 +241,39 @@ include('header.php');
                             <input type="Date" class="form-control" name="Dateofbirth" id="Dateofbirth" aria-label="Dateofbirth">
                      
                         </div>  
-                    </div>
-              </div>        
+                  </div>
+            </div>        
                     
               
-              <div class="col-sm-6">
-                    <div class="mb-4">
+            <div class="col-sm-4">
+                  <div class="mb-4">
                  
                         <label for="Fathername" class="form-label">Father Name</label>
 
                     <div class="input-group">
                       <input type="Text" class="form-control" name="Fathername" id="Fathername" placeholder="Father Name" aria-label="Fathername">
                     </div>   
-                    </div> 
-              </div>  
+                  </div> 
+            </div>  
                 
 
-              <div class="col-sm-6">
-                  <div class="mb-4">
+            <div class="col-sm-4">
+                <div class="mb-4">
                  
                         <label for="Mothername" class="form-label">Mother Name</label>
 
-                    <div class="input-group">
+                  <div class="input-group">
                       <input type="Text" class="form-control" name="Mothername" id="Mothername" placeholder="Mother Name" aria-label="Mothername">
-                    </div>   
-                  </div> 
-              </div>  
+                  </div>   
+                </div> 
+            </div> 
+            </div>  
+ 
                
 
 
-
-              <div class="col-sm-6">                
+            <div class="row">
+            <div class="col-sm-4">                
                    <div class="mb-4">
                      <label for="Maritalstatus" class="form-label">Marital Status</label>
  
@@ -276,7 +286,7 @@ include('header.php');
               </div>
               
 
-              <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                  
                         <label for="Qualification" class="form-label">Qualification</label>
@@ -285,9 +295,9 @@ include('header.php');
                       <input type="Text" class="form-control" name="Qualification" id="Qualification" placeholder="Qualification" aria-label="Qualification">
                     </div>   
                   </div> 
-              </div>  
+            </div>  
 
-              <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                  
                         <label for="Workexperience" class="form-label">Work Experience</label>
@@ -296,9 +306,11 @@ include('header.php');
                       <input type="Text" class="form-control" name="Workexperience" id="Workexperience" placeholder="Work Experience" aria-label="Workexperience">
                     </div>   
                   </div> 
-              </div>  
-             
-              <div class="col-sm-6">
+            </div>  
+            </div>  
+
+            <div class="row">
+            <div class="col-sm-4">
                   <div class="mb-4">
                  
                         <label for="Specialization" class="form-label">Specialization</label>
@@ -307,9 +319,9 @@ include('header.php');
                       <input type="Text" class="form-control" name="Specialization" id="Specialization" placeholder="Specialization" aria-label="Specialization">
                     </div>   
                   </div> 
-              </div>  
+            </div>  
 
-              <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                     <label for="Pannumber" class="form-label">Pan Number</label>
 
@@ -318,10 +330,10 @@ include('header.php');
                      
                     </div>  
                   </div>
-              </div>   
+            </div>   
            
 
-              <div class="col-sm-6">
+            <div class="col-sm-4">
                   <div class="mb-4">
                  
                         <label for="Bankdetails" class="form-label">Bank Details</label>
@@ -330,9 +342,8 @@ include('header.php');
                       <input type="Text" class="form-control" name="Bankdetails" id="Bankdetails" placeholder="Bank Details" aria-label="Bankdetails">
                     </div>   
                   </div> 
-              </div>  
- 
-            
+            </div>
+            </div>           
                                 
   </main>
 <?php 
