@@ -148,7 +148,7 @@ include('include/header.php');
 
             <tbody>
             <?php
-                $res=mysqli_query($con,"select staffId ,staffName,staffExper,staffDepartment,staffSpeciailst,staffRole,staffSta from staff");
+                $res=mysqli_query($con,"select depId ,depName,depSta from department");
                 while($row=mysqli_fetch_assoc($res)){
                 ?>
 
@@ -159,7 +159,7 @@ include('include/header.php');
                     <label class="form-check-label" for="teamDataCheck1"></label>
                   </div>
                 </td>
-                <td><?php echo $row['staffName'] ?></td>               
+                <td><?php echo $row['depName'] ?></td>               
                 <td>
                 <div class="btn-group" role="group">
                     <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target=".exampleModalCenter" onclick="editDept('<?php echo $row['depId'] ?>')">
@@ -261,7 +261,7 @@ include('include/header.php');
                 <div class="card-footer d-flex justify-content-end align-items-center gap-3">       
                     <input type="hidden" name="insert_department" id="insert_department" >       
                     <a href="javascript:void(0)" data-bs-dismiss="modal" class="btn btn-danger">Cancel</a>
-                    <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Save</button>
+                    <button type="submit"  class="btn btn-primary">Save</button>
                 </div>        
 
               </div>
@@ -286,24 +286,24 @@ include('include/header.php');
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-4">                        
-                            <label for="Name" class="form-label">Name</label>
+                            <label for="uName" class="form-label">Name</label>
                             <div class="input-group">
-                                <input type="Text" class="form-control" name="Name" id="Name" placeholder="Name" aria-label="Name">
+                                <input type="Text" class="form-control" name="uName" id="uName" placeholder="Name" aria-label="Name">
                             </div>   
                         </div> 
                     </div>   
                     <div class="col-sm-6">
                         <div class="mb-4">                        
-                            <label for="Description" class="form-label">Description</label>
+                            <label for="uDescription" class="form-label">Description</label>
                             <div class="input-group">
-                                <input type="Text" class="form-control" name="Description" id="Description" placeholder="Description" aria-label="Description">
+                                <input type="Text" class="form-control" name="uDescription" id="uDescription" placeholder="Description" aria-label="Description">
                             </div>   
                         </div> 
                     </div>                   
                 </div>                 
                 <!-- Body -->
                 <div class="card-footer d-flex justify-content-end align-items-center gap-3">       
-                    <input type="hidden" name="update_staff" id="update_staff" >       
+                    <input type="hidden" name="update_dep" id="update_dep" >       
                     <a href="javascript:void(0)" data-bs-dismiss="modal" class="btn btn-danger">Cancel</a>
                     <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Update</button>
                 </div>
