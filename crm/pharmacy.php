@@ -144,6 +144,7 @@ include('include/header.php');
                 <th scope="col">Group </th>
                 <th scope="col">Composition </th>
                 <th scope="col">Edit</th>  
+                <th scope="col">Delete</th>  
                                
               </tr>
             </thead>
@@ -163,8 +164,15 @@ include('include/header.php');
                 <td>Medi Limit</td>
                 <td>
                 <div class="btn-group" role="group">
-                    <a class="btn btn-white btn-sm" href="javascript:void(0)">
+                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target=".exampleModalCenter">
                       <i class="bi-pencil-fill me-1"></i> Edit
+                    </a>                  
+                  </div>
+                </td>
+                <td>
+                <div class="btn-group" role="group">
+                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target=".exampleModal" >
+                      <i class="bi-trash-fill me-1"></i> Delete
                     </a>                  
                   </div>
                 </td>
